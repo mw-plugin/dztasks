@@ -38,7 +38,7 @@ def getInitDFile():
 
 
 def getConf():
-    path = getServerDir() + "/dztasks.conf"
+    path = getServerDir() + "/custom/conf/app.conf"
     return path
 
 
@@ -78,12 +78,9 @@ def checkArgs(data, ck=[]):
     return (True, mw.returnJson(True, 'ok'))
 
 def configTpl():
-    path = getPluginDir() + '/tpl'
-    pathFile = os.listdir(path)
+    # path = getPluginDir() + '/tpl'
+    # pathFile = os.listdir(path)
     tmp = []
-    for one in pathFile:
-        file = path + '/' + one
-        tmp.append(file)
     return mw.getJson(tmp)
 
 
@@ -170,7 +167,7 @@ def initDreplace():
     return file_bin
 
 
-def redisOp(method):
+def dzOp(method):
     file = initDreplace()
 
     current_os = mw.getOs()
@@ -193,22 +190,22 @@ def redisOp(method):
 
 
 def start():
-    return redisOp('start')
+    return dzOp('start')
 
 
 def stop():
-    return redisOp('stop')
+    return dzOp('stop')
 
 
 def restart():
-    status = redisOp('restart')
+    status = dzOp('restart')
 
     log_file = runLog()
     mw.execShell("echo '' > " + log_file)
     return status
 
 def reload():
-    return redisOp('reload')
+    return dzOp('reload')
 
 def initdStatus():
     current_os = mw.getOs()
@@ -263,7 +260,7 @@ def initdUinstall():
 
 
 def runLog():
-    return getServerDir() + '/data/redis.log'
+    return getServerDir() + '/data/logs.pl'
 
 
 def getRedisConfInfo():
