@@ -18,7 +18,7 @@
 app_start(){
 	echo "Starting dztasks server..."
 	cd {$SERVER_PATH}/dztasks
-	./dztasks service >> {$SERVER_PATH}/dztasks/logs.pl 2>&1 &
+	./dztasks web >> {$SERVER_PATH}/dztasks/logs.pl 2>&1 &
 }
 
 app_stop(){
