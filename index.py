@@ -113,6 +113,8 @@ def contentReplace(content):
     content = content.replace('{$ROOT_PATH}', mw.getRootDir())
     content = content.replace('{$SERVER_PATH}', service_path)
     content = content.replace('{$SERVER_APP}', service_path + '/dztasks')
+    content = content.replace('{$ADMIN_NAME}', mw.getRandomString(6))
+    content = content.replace('{$ADMIN_PASS}', mw.getRandomString(10))
     return content
 
 
