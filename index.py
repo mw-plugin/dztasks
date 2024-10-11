@@ -264,6 +264,22 @@ def runLog():
     return getServerDir() + '/logs.pl'
 
 
+def getDzPort():
+    file = getConf()
+    content = mw.readFile(file)
+    rep = r'port\s*=\s*(.*)'
+    tmp = re.search(rep, content)
+    return tmp.groups()[0].strip()
+
+def homePage():
+    http_port = getDzPort()
+    ip = mw.getLocalIp()
+    if mw.isAppleSystem():
+        ip = '127.0.0.1'
+    url = 'http://'+ip+":"+str(http_port)
+    # print(url)
+    return mw.returnJson(True, 'ok!', url)
+
 if __name__ == "__main__":
     func = sys.argv[1]
     if func == 'status':
@@ -292,5 +308,7 @@ if __name__ == "__main__":
         print(configTpl())
     elif func == 'read_config_tpl':
         print(readConfigTpl())
+    elif func == 'home_page':
+        print(homePage())
     else:
         print('error')

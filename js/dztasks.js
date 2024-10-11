@@ -53,6 +53,20 @@ function zdPostCallbak(method, version, args,callback){
     },'json'); 
 }
 
+function commonHomePage(){
+    zdPost('home_page', '', {}, function(data){
+        var rdata = $.parseJSON(data.data);
+        window.open(rdata.data);
+    });
+}
+
+function dzCommonFunc(){
+    var con = '';
+    con += '<hr/><p class="conf_p" style="text-align:center;">\
+        <button class="btn btn-default btn-sm" onclick="commonHomePage()">主页</button>\
+    </p>';
+    $(".soft-man-con").html(con);
+}
 
 function zdReadme(){
     var readme = '<ul class="help-info-text c7">';
