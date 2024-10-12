@@ -35,13 +35,13 @@ Install_App()
 	mkdir -p $serverPath/source/dztasks
 	mkdir -p $serverPath/dztasks
 
-	FILE_TGZ=dztasks_v1.0_${DZ_NAME}_${DZ_ARCH_NAME}.tar.gz
+	FILE_TGZ=dztasks_v${VERSION}_${DZ_NAME}_${DZ_ARCH_NAME}.tar.gz
 	DZ_DIR=$serverPath/source/dztasks
 
 	echo $FILE_TGZ
 	# https://github.com/midoks/dztasks/releases/download/1.0/dztasks_v1.0_darwin_amd64.tar.gz
 	if [ ! -f $DZ_DIR/${FILE_TGZ} ];then
-		wget --no-check-certificate -O $DZ_DIR/${FILE_TGZ} https://github.com/midoks/dztasks/releases/download/1.0/${FILE_TGZ}
+		wget --no-check-certificate -O $DZ_DIR/${FILE_TGZ} https://github.com/midoks/dztasks/releases/download/${VERSION}/${FILE_TGZ}
 	fi
 
 	cd $DZ_DIR && tar -zxvf ${FILE_TGZ} -C $serverPath/dztasks
