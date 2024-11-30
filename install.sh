@@ -9,8 +9,6 @@ serverPath=$(dirname "$rootPath")
 
 # cd /Users/midoks/Desktop/mwdev/server/mdserver-web/plugins/dztasks && bash install.sh install 1.0
 # cd /wwww/server/mdserver-web/plugins/dztasks && bash install.sh install 1.0
-
-install_tmp=${rootPath}/tmp/mw_install.pl
 VERSION=$2
 sysArch=`arch`
 sysName=`uname`
@@ -30,7 +28,7 @@ if [ "$sysName" == "Darwin" ];then
 fi
 Install_App()
 {
-	echo '正在安装脚本文件...' > $install_tmp
+	echo '正在安装脚本文件...'
 	mkdir -p $serverPath/source
 	mkdir -p $serverPath/source/dztasks
 	mkdir -p $serverPath/dztasks
